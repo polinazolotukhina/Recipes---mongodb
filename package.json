@@ -1,0 +1,46 @@
+{
+    "name": "recepy",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "recepy": "nodemon index.js",
+        "client": "npm run start --prefix client",
+        "dev": "concurrently \"npm run recepy\" \"npm run client\""
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@material-ui/core": "^1.4.0",
+        "@material-ui/icons": "^1.1.0",
+        "axios": "^0.18.0",
+        "babel-runtime": "^6.26.0",
+        "body-parser": "^1.18.3",
+        "concurrently": "^3.5.1",
+        "connect-ensure-login": "^0.1.1",
+        "cookie-session": "^2.0.0-beta.3",
+        "express": "^4.16.3",
+        "material-ui": "^1.0.0-beta.47",
+        "materialize-css": "^1.0.0-rc.2",
+        "mongoose": "^5.1.6",
+        "nodemon": "^1.17.5",
+        "passport": "^0.4.0",
+        "passport-facebook": "^2.1.1",
+        "passport-jwt": "^4.0.0",
+        "react": "^16.4.1",
+        "react-bootstrap": "^0.32.1",
+        "react-dom": "^16.4.1",
+        "react-redux": "^5.0.7",
+        "react-router": "^4.3.1",
+        "react-router-dom": "^4.3.1",
+        "react-swipeable-views": "^0.12.15",
+        "redux-form": "^7.4.2",
+        "redux-form-material-ui": "^5.0.0-beta.3",
+        "redux-thunk": "^2.3.0"
+    },
+    "devDependencies": {
+        "babel-plugin-transform-regenerator": "^6.26.0",
+        "eslint": "^4.19.1"
+    }
+}
