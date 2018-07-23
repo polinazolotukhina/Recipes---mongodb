@@ -1,18 +1,18 @@
 # Facebook-OAuth-Node
-Login with Facebook - Node.js. 
+Recipes---mongodb - Node.js, Express, Mongo db, Mongoose, React-Redux
 
 
 
 **Clone the project**. 
 ```
-git clone https://github.com/polinazolotukhina/Facebook-OAuth-Node.git
+git clone https://github.com/polinazolotukhina/Recipes---mongodb.git
 
 ```
 
 **Go to the folder **. 
 
 ```
-cd Facebook-OAuth-Node
+cd Recipes---mongodb
 ```
 **Install **.
 ```
