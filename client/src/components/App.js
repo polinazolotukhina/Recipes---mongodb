@@ -9,6 +9,7 @@ import Header from './Header';
 import Home from './Home';
 import RecipeNew from './RecipeForm/RecipeNew';
 import Recipes from './Recipes';
+import Drop from './RecipeForm/Drop';
 
 const Dashboard = () => <h2>Dashboard</h2>;
 
@@ -26,6 +27,7 @@ class App extends Component {
                         <Route exact path="/surveys" component={Dashboard} />
                         <Route path="/new_recipe" component={RecipeNew} />
                         <Route path="/recipes" component={Recipes} />
+                        <Route path="/new-recipe" component={Drop} />
                     </div>
                 </BrowserRouter>
             </div>

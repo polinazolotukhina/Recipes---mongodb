@@ -10,12 +10,16 @@ module.exports = app => {
     });
 
     app.get('/api/recipes/:level', async (req, res) => {
-        const recipes = await Recipe.find({ difficulty: req.params.level });
+        const recipes = await Recipe.find({ difficulty: req.params.level })
+            .sort({ dateAdded: -1 })
+            .sort({ dateAdded: -1 });
         res.send(recipes);
     });
 
     app.get('/api/user_recipes/:id', async (req, res) => {
-        const recipes = await Recipe.find({ _user: req.params.id });
+        const recipes = await Recipe.find({ _user: req.params.id }).sort({
+            dateAdded: -1
+        });
         res.send(recipes);
     });
 
@@ -26,7 +30,6 @@ module.exports = app => {
         res.send(recipes);
     });
 
-    
     app.post('/api/new_recipe', (req, res, next) => {
         const {
             name,
@@ -36,7 +39,8 @@ module.exports = app => {
             _user,
             method,
             author,
-            difficulty
+            difficulty,
+            img
         } = req.body;
         const recipe = new Recipe({
             name,
@@ -47,11 +51,12 @@ module.exports = app => {
             _user,
             method,
             author,
-            difficulty
+            difficulty,
+            img
         });
         recipe.save(function(err) {
             if (err) throw err;
-            else console.log('saved it successfully!!YEP!');
+            else console.log('saved it successfully');
         });
     });
 };

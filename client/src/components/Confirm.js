@@ -31,7 +31,7 @@ class Confirm extends React.Component {
     };
 
     render() {
-        const { recipeId, userId } = this.props;
+        const { recipeId, userId, title } = this.props;
 
         return (
             <div>
@@ -45,7 +45,7 @@ class Confirm extends React.Component {
                     aria-describedby="alert-dialog-description"
                 >
                     <DialogTitle id="alert-dialog-title">
-                        {`Are you sure you want to delete this recipe?recipeId${recipeId},userId: ${userId} `}
+                        {`Are you sure you want to delete recipe "${title}?" `}
                     </DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">

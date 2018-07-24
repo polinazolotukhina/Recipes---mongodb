@@ -2,13 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 const RecipeNewForm = props => {
-    const {
-        handleSubmit,
-        pristine,
-        reset,
-        submitting,
-        classes
-    } = props;
+    const { handleSubmit, pristine, reset, submitting, classes } = props;
     return (
         <form onSubmit={handleSubmit}>
             <div>

@@ -43,26 +43,25 @@ const styles = theme => ({
 
 class RecipeCard extends React.Component {
     state = {
-        expanded: false,
-        description: `${this.props.description &&
-            this.props.description.slice(0, 150)}...`
+        expanded: false
     };
 
     handleExpandClick = () => {
         this.setState(state => ({
-            expanded: !state.expanded,
-            description: !this.state.expanded
-                ? this.props.description
-                : `${this.props.description.slice(0, 150)}...`
+            expanded: !state.expanded
         }));
     };
-    renderDelete(current, id, recipeId) {
+    renderDelete(current, id, recipeId, title) {
         if (current === id) {
-            return <Confirm userId={current} recipeId={recipeId} />;
+            return (
+                <Confirm userId={current} recipeId={recipeId} title={title} />
+            );
         }
     }
 
     render() {
+        console.log('description', this.props.description);
+
         const {
             classes,
             title,
@@ -73,7 +72,8 @@ class RecipeCard extends React.Component {
             difficulty,
             userId,
             currentUser,
-            recipeId
+            recipeId,
+            description
         } = this.props;
 
         return (
@@ -93,7 +93,8 @@ class RecipeCard extends React.Component {
                                 {this.renderDelete(
                                     currentUser,
                                     userId,
-                                    recipeId
+                                    recipeId,
+                                    title
                                 )}
                             </div>
                         }
@@ -106,7 +107,7 @@ class RecipeCard extends React.Component {
                         title="Contemplative Reptile"
                     />
                     <CardContent>
-                        <p>{this.state.description}</p>
+                        <p>{this.props.description}</p>
                     </CardContent>
                     <CardActions
                         className={classes.actions}

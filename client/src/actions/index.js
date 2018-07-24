@@ -12,8 +12,7 @@ export const getRecipies = param => async dispatch => {
 };
 
 export const deleteRecipies = recipeId => async dispatch => {
-    console.log('ACTIONS recipeId!', recipeId);
-    axios.delete(`/api/delete-recipe/${recipeId}`);
+    await axios.delete(`/api/delete-recipe/${recipeId}`);
     const res = await axios.get(`/api/recipes`);
     dispatch({ type: types.FETCH_RECIPE, payload: res.data });
 };

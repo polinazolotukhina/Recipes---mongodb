@@ -33,6 +33,11 @@ class Header extends Component {
                             Add Recipe
                         </Link>
                     </Button>,
+                    <Button key="5">
+                        <Link to={'/new-recipe'} className="myMenuItem">
+                            Add Recipe with DROP
+                        </Link>
+                    </Button>,
 
                     <Button key="4">
                         <a href="/api/logout" className="myMenuItem">

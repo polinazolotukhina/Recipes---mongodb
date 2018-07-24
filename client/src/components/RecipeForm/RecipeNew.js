@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 import RecipeNewForm from './RecipeNewForm';
+import Drop from './Drop';
 
 class RecipeNew extends React.Component {
     submit = values => {
@@ -12,14 +13,20 @@ class RecipeNew extends React.Component {
         this.props.actions.postRecipe(
             Object.assign({}, values, {
                 _user: this.props.user._id,
-                author: this.props.user.name
+                author: this.props.user.name,
+                img: this.props.img
             }),
             this.props.history
         );
         this.props.history.push('/recipes');
     };
     render() {
-        return <RecipeNewForm onSubmit={this.submit} />;
+        console.log('IMG', this.props.img );
+        return (
+            <div>
+                <RecipeNewForm onSubmit={this.submit} />
+            </div>
+        );
     }
 }
 
