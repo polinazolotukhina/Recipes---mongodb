@@ -66,6 +66,7 @@ class Recipes extends Component {
                                         author={recipe.author}
                                         userId={recipe._user}
                                         recipeId={recipe._id}
+                                        img={recipe.img}
                                         currentUser={user._id}
                                         getUserRecipies={re => {
                                             actions.getUserRecipies(re);

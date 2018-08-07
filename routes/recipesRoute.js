@@ -9,19 +9,44 @@ const Recipe = mongoose.model('recipes');
 const Item = mongoose.model('clothes');
 
 module.exports = app => {
-    app.use(multer({ dest: __dirname + '/resoucres/' }).any());
+    // app.use(multer({ dest: __dirname + '/resoucres/' }).any());
+    //
+    // app.post('/uploads', function(req, res) {
+    //     const readerStream = fs.createReadStream(req.files[0].path);
+    //     var dest_file = pathModule.join(
+    //         req.files[0].destination,
+    //         req.files[0].originalname
+    //     );
+    //     var writerStream = fs.createWriteStream(dest_file);
+    //
+    //     var stream = readerStream.pipe(writerStream);
+    //     stream.on('finish', function() {
+    //         fs.unlink(req.files[0].path);
+    //     });
+    // });
 
-    app.post('/uploads', function(req, res) {
-        const readerStream = fs.createReadStream(req.files[0].path);
-        var dest_file = pathModule.join(
-            req.files[0].destination,
-            req.files[0].originalname
-        );
-        var writerStream = fs.createWriteStream(dest_file);
+    const storage = multer.diskStorage({
+        destination: function(req, file, cb) {
+            cb(null, 'uploads/');
+        },
+        filename: function(req, file, cb) {
+            cb(null, file.fieldname + '-' + Date.now() + '.jpg');
+        }
+    });
+    const upload = multer({ storage: storage }).single('recipeimage');
 
-        var stream = readerStream.pipe(writerStream);
-        stream.on('finish', function() {
-            fs.unlink(req.files[0].path);
+    app.post('/img', function(req, res) {
+        upload(req, res, function(err) {
+            if (err) {
+                // An error occurred when uploading
+                // return;
+            }
+            res.json({
+                success: true,
+                message: 'Img uploaded!'
+            });
+
+            // Everything went fine
         });
     });
 

@@ -88,9 +88,10 @@ class RecipeCard extends React.Component {
             userId,
             currentUser,
             recipeId,
-            description
+            description,
+            img
         } = this.props;
-
+        console.log('img', img);
         return (
             <div>
                 <Card className={classes.card}>
@@ -116,9 +117,10 @@ class RecipeCard extends React.Component {
                         title={title}
                         subheader={date}
                     />
+                    <img src={img} />
                     <CardMedia
                         className={classes.media}
-                        image="/static/images/cards/paella.jpg"
+                        image={img}
                         title="Contemplative Reptile"
                     />
                     <CardContent>
