@@ -11,6 +11,8 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import red from '@material-ui/core/colors/red';
+import blue from '@material-ui/core/colors/blue';
+import yellow from '@material-ui/core/colors/yellow';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -36,8 +38,14 @@ const styles = theme => ({
     expandOpen: {
         transform: 'rotate(180deg)'
     },
-    avatar: {
+    avatarEasy: {
+        backgroundColor: blue[500]
+    },
+    avatarHard: {
         backgroundColor: red[500]
+    },
+    avatarMedium: {
+        backgroundColor: yellow[500]
     }
 });
 
@@ -58,10 +66,17 @@ class RecipeCard extends React.Component {
             );
         }
     }
+    renderAvatar() {
+        if (this.props.difficulty === 'easy') {
+            return this.props.classes.avatarEasy;
+        }
+        if (this.props.difficulty === 'hard') {
+            return this.props.classes.avatarHard;
+        }
+        return this.props.classes.avatarMedium;
+    }
 
     render() {
-        console.log('description', this.props.description);
-
         const {
             classes,
             title,
@@ -83,7 +98,7 @@ class RecipeCard extends React.Component {
                         avatar={
                             <Avatar
                                 aria-label="Recipe"
-                                className={classes.avatar}
+                                className={this.renderAvatar()}
                             >
                                 {difficulty && difficulty.charAt(0)}
                             </Avatar>

@@ -7,32 +7,47 @@ import RecipeCard from './RecipeCard';
 import Grid from '@material-ui/core/Grid';
 
 const levels = [
-    { level: 'easy', label: 'easy ' },
+    { level: 'easy', label: 'easy' },
     { level: 'medium', label: 'medium' },
     { level: 'hard', label: 'hard' },
     { level: '', label: 'all recipies' }
 ];
+const style = {
+    active: { backgroundColor: '#66A5A0' },
+    notActive: { backgroundColor: '' }
+};
 
 class Recipes extends Component {
     constructor(props) {
         super(props);
         props.actions.getRecipies('');
     }
-    renderButtons() {
+    handleBtnClick = (level, label) => {
+        this.props.actions.getRecipies(level);
+        this.props.actions.btnActive(label);
+    };
+    buttonColor = btnId => {
+        if (this.props.activeButton === btnId) {
+            return style.active;
+        }
+        return style.notActive;
+    };
+
+    renderButtons = () => {
         return levels.map((item, index) => (
             <button
                 key={index}
+                style={this.buttonColor(item.label)}
                 onClick={() => {
-                    this.props.actions.getRecipies(item.level);
+                    this.handleBtnClick(item.level, item.label);
                 }}
             >
                 {item.label}
             </button>
         ));
-    }
+    };
     render() {
         const { recipes, actions, user } = this.props;
-
         return (
             <div>
                 {this.renderButtons()}
@@ -64,8 +79,8 @@ class Recipes extends Component {
         );
     }
 }
-function mapStateToProps({ recipes, user }) {
-    return { recipes, user };
+function mapStateToProps({ recipes, user, activeButton }) {
+    return { recipes, user, activeButton };
 }
 Recipes.propTypes = {
     actions: PropTypes.object.isRequired

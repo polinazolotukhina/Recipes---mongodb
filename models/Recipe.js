@@ -12,7 +12,7 @@ const recipeSchema = new Schema({
     method: String,
     author: String,
     difficulty: String,
-    img: { data: Buffer, contentType: String }
+    img: String
 });
 
 mongoose.model('recipes', recipeSchema);

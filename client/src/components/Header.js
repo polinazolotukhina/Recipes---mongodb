@@ -53,7 +53,7 @@ class Header extends Component {
                 style={{
                     backgroundColor: '#64a5a0',
                     width: '100%',
-                    height: '100px'
+                    height: '77px'
                 }}
             >
                 {this.renderContent()}

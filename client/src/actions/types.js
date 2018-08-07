@@ -4,3 +4,4 @@ export const U_FAILURE = 'U_FAILURE';
 export const FETCH_USER = 'FETCH_USER';
 export const POST_RECIPE = 'POST_RECIPE';
 export const FETCH_RECIPE = 'FETCH_RECIPE';
+export const ACTIVE_BUTTON = 'ACTIVE_BUTTON';

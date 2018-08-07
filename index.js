@@ -8,6 +8,7 @@ const key = require('./keys');
 
 require('./models/User');
 require('./models/Recipe');
+require('./models/Item');
 require('./services/facebookLogin');
 
 mongoose.connect(key.mongoURI);
